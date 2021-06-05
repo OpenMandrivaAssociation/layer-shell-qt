@@ -15,9 +15,11 @@ BuildRequires:	cmake(Qt5Core)
 BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5WaylandClient)
 BuildRequires:	cmake(Qt5XkbCommonSupport)
+BuildRequires:	cmake(WaylandProtocols)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	qt5-qtwayland
+BuildRequires:	qt5-qtwayland-private-devel
 
 %description
 Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
