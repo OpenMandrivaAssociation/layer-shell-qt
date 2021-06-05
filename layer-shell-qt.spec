@@ -16,7 +16,9 @@ BuildRequires:	cmake(Qt5Gui)
 BuildRequires:	cmake(Qt5WaylandClient)
 BuildRequires:	cmake(Qt5XkbCommonSupport)
 BuildRequires:	cmake(WaylandProtocols)
+BuildRequires:	cmake(PlasmaWaylandProtocols)
 BuildRequires:	pkgconfig(wayland-client)
+BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(xkbcommon)
 BuildRequires:	qt5-qtwayland
 BuildRequires:	qt5-qtwayland-private-devel
