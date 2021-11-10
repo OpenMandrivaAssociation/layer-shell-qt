@@ -2,7 +2,7 @@
 %define major 5
 
 Name:		layer-shell-qt
-Version:	5.23.2
+Version:	5.23.3
 Release:	1
 Summary:	Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
 Group:		System/Libraries
