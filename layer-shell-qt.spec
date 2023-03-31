@@ -3,7 +3,7 @@
 
 Name:		layer-shell-qt
 Version:	5.27.3
-Release:	1
+Release:	2
 Summary:	Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
 Group:		System/Libraries
 License:	GPLv2
