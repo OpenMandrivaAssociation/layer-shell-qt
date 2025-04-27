@@ -4,9 +4,9 @@
 %define gitbranch Plasma/6.0
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
-Name:		plasma6-layer-shell-qt
+Name:		layer-shell-qt
 Version:	6.3.4
-Release:	%{?git:0.%{git}.}2
+Release:	%{?git:0.%{git}.}3
 Summary:	Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
 Group:		System/Libraries
 License:	GPLv2
@@ -30,6 +30,11 @@ BuildRequires:	cmake(PlasmaWaylandProtocols)
 BuildRequires:	pkgconfig(wayland-client)
 BuildRequires:	pkgconfig(wayland-protocols)
 BuildRequires:	pkgconfig(xkbcommon)
+BuildSystem:	cmake
+BuildOption:	-DBUILD_QCH:BOOL=ON
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
+# Renamed after 6.0 2025-04-27
+%rename plasma6-layer-shell-qt
 
 %description
 Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
@@ -44,12 +49,15 @@ Qt component to allow applications to make use of the Wayland wl-layer-shell pro
 %{_qtdir}/qml/org/kde/layershell
 
 #------------------------------------------------------------------------------
-%define devname %mklibname LayerShellQtInterface6 -d
+%define olddevname %mklibname LayerShellQtInterface6 -d
+%define devname %mklibname LayerShellQtInterface -d
 
 %package -n %{devname}
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	%{name} = %{EVRD}
+# Renamed after 6.0 2025-04-27
+%rename %{olddevname}
 
 %description -n %{devname}
 Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
@@ -58,19 +66,3 @@ Qt component to allow applications to make use of the Wayland wl-layer-shell pro
 %{_libdir}/libLayerShellQtInterface.so
 %{_includedir}/LayerShellQt
 %{_libdir}/cmake/LayerShellQt
-
-#------------------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n layer-shell-qt-%{?git:%{gitbranchd}}%{!?git:%{version}}
-%cmake \
-	-DBUILD_QCH:BOOL=ON \
-	-DBUILD_WITH_QT6:BOOL=ON \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
