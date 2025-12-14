@@ -5,8 +5,8 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 
 Name:		layer-shell-qt
-Version:	6.5.3
-Release:	%{?git:0.%{git}.}2
+Version:	6.5.4
+Release:	%{?git:0.%{git}.}1
 Summary:	Qt component to allow applications to make use of the Wayland wl-layer-shell protocol
 Group:		System/Libraries
 License:	GPLv2
